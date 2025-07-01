@@ -32,6 +32,9 @@ describe('RegisterComponent', () => {
     component.registerForm.controls['email'].setValue('g.guerragaldames@gmail.com');
     component.registerForm.controls['password'].setValue('123456');
     component.registerForm.controls['confirmarPassword'].setValue('123456');
+
+    component.registerForm.updateValueAndValidity();
+
     expect(component.registerForm.valid).toBeTruthy();
   });
 });

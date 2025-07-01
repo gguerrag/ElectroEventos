@@ -4,16 +4,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  login(email: string, password: string) {
-    console.log(`Login con ${email} y ${password}`);
+  private loggedIn = false;
+
+  constructor() {}
+
+  login(email: string, password: string): boolean {
+    this.loggedIn = true;
+    console.log(`Login con ${email}`);
     return true;
   }
 
-  logout() {
-    console.log('Logout');
+  logout(): void {
+    this.loggedIn = false;
+    console.log('Logout realizado');
   }
 
   isLoggedIn(): boolean {
-    return true;
+    return this.loggedIn;
   }
 }
