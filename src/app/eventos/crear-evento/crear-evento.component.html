@@ -1,18 +1,78 @@
 <div class="container mt-5">
-  <h2>Crear Evento</h2>
-  <form>
-    <div class="mb-3">
-      <label>Nombre del Evento</label>
-      <input class="form-control">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center mb-4">Crear Evento</h2>
+      <form [formGroup]="crearEventoForm" (ngSubmit)="onSubmit()">
+
+        <!-- Nombre -->
+        <div class="mb-3">
+          <label>Nombre del Evento</label>
+          <input type="text" class="form-control" formControlName="nombre" placeholder="Ej: Techno Night">
+          <div *ngIf="crearEventoForm.get('nombre')?.invalid && crearEventoForm.get('nombre')?.touched" class="text-danger">
+            <small *ngIf="crearEventoForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</small>
+            <small *ngIf="crearEventoForm.get('nombre')?.errors?.['minlength']">Mínimo 3 caracteres.</small>
+          </div>
+        </div>
+
+        <!-- Fecha -->
+        <div class="mb-3">
+          <label>Fecha</label>
+          <input type="date" class="form-control" formControlName="fecha">
+          <div *ngIf="crearEventoForm.get('fecha')?.invalid && crearEventoForm.get('fecha')?.touched" class="text-danger">
+            <small>La fecha es obligatoria.</small>
+          </div>
+        </div>
+
+        <!-- Estilo -->
+        <div class="mb-3">
+          <label>Estilo</label>
+          <select class="form-select" formControlName="estilo">
+            <option value="">Seleccione un estilo</option>
+            <option value="Techno">Techno</option>
+            <option value="House">House</option>
+            <option value="Hardstyle">Hardstyle</option>
+            <option value="Trance">Trance</option>
+            <option value="EDM">EDM</option>
+          </select>
+          <div *ngIf="crearEventoForm.get('estilo')?.invalid && crearEventoForm.get('estilo')?.touched" class="text-danger">
+            <small>Debe seleccionar un estilo.</small>
+          </div>
+        </div>
+
+        <!-- Descripción -->
+        <div class="mb-3">
+          <label>Descripción</label>
+          <textarea class="form-control" rows="3" formControlName="descripcion" placeholder="Describe el evento..."></textarea>
+          <div *ngIf="crearEventoForm.get('descripcion')?.invalid && crearEventoForm.get('descripcion')?.touched" class="text-danger">
+            <small *ngIf="crearEventoForm.get('descripcion')?.errors?.['required']">La descripción es obligatoria.</small>
+            <small *ngIf="crearEventoForm.get('descripcion')?.errors?.['minlength']">Mínimo 10 caracteres.</small>
+          </div>
+        </div>
+
+        <!-- Ubicación -->
+        <div class="mb-3">
+          <label>Ubicación</label>
+          <input type="text" class="form-control" formControlName="ubicacion" placeholder="Ej: Santiago Centro">
+          <div *ngIf="crearEventoForm.get('ubicacion')?.invalid && crearEventoForm.get('ubicacion')?.touched" class="text-danger">
+            <small>La ubicación es obligatoria.</small>
+          </div>
+        </div>
+
+        <!-- Precio -->
+        <div class="mb-3">
+          <label>Precio (CLP)</label>
+          <input type="number" class="form-control" formControlName="precio" placeholder="Ej: 10000">
+          <div *ngIf="crearEventoForm.get('precio')?.invalid && crearEventoForm.get('precio')?.touched" class="text-danger">
+            <small *ngIf="crearEventoForm.get('precio')?.errors?.['required']">El precio es obligatorio.</small>
+            <small *ngIf="crearEventoForm.get('precio')?.errors?.['min']">El precio debe ser mayor a 0.</small>
+          </div>
+        </div>
+
+        <!-- Botón -->
+        <button class="btn btn-success w-100" type="submit">
+          Crear Evento
+        </button>
+      </form>
     </div>
-    <div class="mb-3">
-      <label>Fecha</label>
-      <input type="date" class="form-control">
-    </div>
-    <div class="mb-3">
-      <label>Estilo</label>
-      <input class="form-control">
-    </div>
-    <button class="btn btn-success">Guardar</button>
-  </form>
+  </div>
 </div>

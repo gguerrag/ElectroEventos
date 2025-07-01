@@ -28,8 +28,10 @@ describe('LoginComponent', () => {
   });
 
   it('form should be valid with correct values', () => {
-    component.loginForm.controls['email'].setValue('g.guerragaldames@gmail.com');
-    component.loginForm.controls['password'].setValue('123456');
-    expect(component.loginForm.valid).toBeTruthy();
+    component.loginForm.get('email')?.setValue('g.guerragaldames@gmail.com');
+    component.loginForm.get('password')?.setValue('123456');
+    component.loginForm.updateValueAndValidity();
+
+    expect(component.loginForm.valid).toBeTrue();
   });
 });
