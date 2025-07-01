@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -10,8 +10,7 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [ReactiveFormsModule]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -24,13 +23,13 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have form invalid when empty', () => {
+  it('form should be invalid when empty', () => {
     expect(component.loginForm.valid).toBeFalsy();
   });
 
-  it('should have form valid with correct values', () => {
-    component.loginForm.controls['email'].setValue('user@test.com');
-    component.loginForm.controls['password'].setValue('Test123!');
+  it('form should be valid with correct values', () => {
+    component.loginForm.controls['email'].setValue('g.guerragaldames@gmail.com');
+    component.loginForm.controls['password'].setValue('123456');
     expect(component.loginForm.valid).toBeTruthy();
   });
 });

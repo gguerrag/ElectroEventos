@@ -1,3 +1,7 @@
+/**
+ * @description Componente encargado de mostrar la lista de eventos disponibles.
+ * Renderiza la información de los eventos utilizando tarjetas.
+ */
 import { Component } from '@angular/core';
 
 @Component({

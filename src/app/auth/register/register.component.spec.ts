@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register.component';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -10,8 +10,7 @@ describe('RegisterComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [RegisterComponent],
       imports: [ReactiveFormsModule]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -24,15 +23,15 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have form invalid when empty', () => {
+  it('form should be invalid when empty', () => {
     expect(component.registerForm.valid).toBeFalsy();
   });
 
-  it('should have form valid when correct values are provided', () => {
-    component.registerForm.controls['nombre'].setValue('Usuario');
-    component.registerForm.controls['email'].setValue('test@test.com');
-    component.registerForm.controls['password'].setValue('Test123!');
-    component.registerForm.controls['confirmarPassword'].setValue('Test123!');
+  it('form should be valid with correct values', () => {
+    component.registerForm.controls['nombre'].setValue('Gonzalo');
+    component.registerForm.controls['email'].setValue('g.guerragaldames@gmail.com');
+    component.registerForm.controls['password'].setValue('123456');
+    component.registerForm.controls['confirmarPassword'].setValue('123456');
     expect(component.registerForm.valid).toBeTruthy();
   });
 });
