@@ -1,0 +1,113 @@
+/* Colores base */
+:root {
+  --primary-color: #111;
+  --secondary-color: #1db954;
+  --accent-color: #ff4081;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+}
+
+/* Reset básico */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
+}
+
+.navbar-brand, .nav-link {
+  color: white !important;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: var(--secondary-color) !important;
+}
+
+/* Botones */
+.btn-primary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+  background-color: #17a74a;
+  border-color: #17a74a;
+}
+
+.btn-danger {
+  background-color: #ff1744;
+  border-color: #ff1744;
+}
+
+.btn-danger:hover {
+  background-color: #d50000;
+  border-color: #d50000;
+}
+
+/* Cards */
+.card {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  background-color: white;
+}
+
+/* Formularios */
+input.ng-invalid.ng-touched {
+  border-color: #d50000;
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+}
+
+/* styles */
+.navbar .nav-link.active {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+footer {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--secondary-color);
+}
