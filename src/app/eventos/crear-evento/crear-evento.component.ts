@@ -1,34 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { EventoService } from 'src/app/core/evento.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-evento',
-  templateUrl: './crear-evento.component.html'
+  templateUrl: './crear-evento.component.html',
+  styleUrls: ['./crear-evento.component.css']
 })
-export class CrearEventoComponent implements OnInit {
+export class CrearEventoComponent {
+  evento = {
+    nombre: '',
+    lugar: '',
+    fecha: ''
+  };
 
-  crearEventoForm!: FormGroup;
+  constructor(private eventoService: EventoService, private router: Router) { }
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.crearEventoForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(3)]],
-      fecha: ['', Validators.required],
-      estilo: ['', Validators.required],
-      descripcion: ['', [Validators.required, Validators.minLength(10)]],
-      ubicacion: ['', Validators.required],
-      precio: ['', [Validators.required, Validators.min(1)]]
+  crearEvento() {
+    this.eventoService.addEvento(this.evento).subscribe(() => {
+      this.router.navigate(['/eventos']); // redirigir después de crear
     });
-  }
-
-  onSubmit(): void {
-    if (this.crearEventoForm.invalid) {
-      this.crearEventoForm.markAllAsTouched();
-      return;
-    }
-
-    console.log('Evento creado:', this.crearEventoForm.value);
-    alert('Evento creado con éxito: ' + JSON.stringify(this.crearEventoForm.value));
   }
 }

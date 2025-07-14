@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nombre": "Fiesta Techno",
+    "lugar": "Santiago",
+    "fecha": "2025-08-01"
+  },
+  {
+    "id": 2,
+    "nombre": "Electro Party",
+    "lugar": "Valparaíso",
+    "fecha": "2025-08-15"
+  }
+]

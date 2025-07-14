@@ -24,6 +24,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { CardEventoComponent } from './shared/card-evento/card-evento.component';
 import { CardEventComponent } from './shared/card-event/card-event.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { CardEventComponent } from './shared/card-event/card-event.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule

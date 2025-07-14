@@ -1,22 +1,31 @@
-/**
- * Servicio que gestiona los eventos de la aplicación.
- * Permite obtener la lista de eventos y gestionar la información de cada uno.
- */
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventoService {
 
-  /**
-   * Lista simulada de eventos disponibles en la aplicación.
-   */
-  getEventos() {
-    return [
-        { id: 1, nombre: 'Techno Night', fecha: '2025-07-15', estilo: 'Techno' },
-        { id: 2, nombre: 'Hardstyle Arena', fecha: '2025-08-20', estilo: 'Hardstyle' }
-      
-    ];
+  private apiUrl = 'https://gguerrag.github.io/json/eventos.json';
+
+  constructor(private http: HttpClient) { }
+
+
+  getEventos(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
+
+
+  crearEvento(evento: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, evento);
+  }
+
+  actualizarEvento(id: number, evento: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, evento);
+  }
+
+  deleteEvento(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 }

@@ -1,15 +1,21 @@
-<div class="container mt-5">
-  <h2>Eventos</h2>
-  <div class="row">
-    <div class="col-md-4 mb-3" *ngFor="let evento of eventos">
-      <div class="card">
-        <img src="assets/images/evento.jpg" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{evento.nombre}}</h5>
-          <p>{{evento.fecha}} - {{evento.estilo}}</p>
-          <a [routerLink]="['/evento', evento.id]" class="btn btn-info">Ver Detalle</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<h2>Lista de eventos</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Lugar</th>
+    <th>Fecha</th>
+    <th>Acciones</th>
+  </tr>
+  <tr *ngFor="let evento of eventos">
+    <td>{{ evento.id }}</td>
+    <td>{{ evento.nombre }}</td>
+    <td>{{ evento.lugar }}</td>
+    <td>{{ evento.fecha }}</td>
+    <td>
+          <a [routerLink]="['/editar-evento', evento.id]">Editar</a>
+          <a [routerLink]="['/evento', evento.id]">Ver</a>
+          <button (click)="eliminarEvento(evento.id)">Eliminar</button>
+    </td>
+  </tr>
+</table>
